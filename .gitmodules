@@ -1,0 +1,3 @@
+[submodule "habrahabr_parser"]
+	path = habrahabr_parser
+	url = git@github.com:Newbilius/habrahabr_parser.git
