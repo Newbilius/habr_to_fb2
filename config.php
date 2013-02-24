@@ -1,4 +1,5 @@
 <?
+
 /**
  * Скрипт сохранения избранного пользователя ХабраХабра.
  *
@@ -8,7 +9,6 @@
  * @copyright  2013
  * @link       https://github.com/Newbilius/habr_to_fb2
  */
-
 header('Content-Type: text/html; charset=utf-8');
 include_once("habrahabr_parser/holy_habr_api.php");
 include_once("holy_steps/holy_stepbystep.php");
@@ -56,6 +56,10 @@ foreach ($steps_array as $step_file_num => $_step) {
 }
 
 function create_dirs() {
+    global $folder_tmp;
+    global $folder_tmp_articles;
+    global $folder_tmp_pics;
+
     if (!file_exists(dirname(__FILE__) . $folder_tmp))
         mkdir(dirname(__FILE__) . $folder_tmp);
     if (!file_exists(dirname(__FILE__) . $folder_tmp_articles))

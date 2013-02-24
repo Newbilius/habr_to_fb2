@@ -1,6 +1,7 @@
 <?php
 
 include_once(dirname(dirname(__FILE__)) ."/config.php");
+create_dirs();
 
 if (!isset($_GET['num'])) {
     $_GET['num'] = 0;
