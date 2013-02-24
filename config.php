@@ -9,6 +9,8 @@ $login="newbilius";
 $favorites_url="http://habrahabr.ru/users/{$login}/favorites/";
 $file_list = 'tmp/list.txt';
 $file_img_list = 'tmp/pictures.txt';
+$img_max_size=600;
+
 
 $step = new Holy_stepbystep();
 

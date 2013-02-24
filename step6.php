@@ -28,7 +28,7 @@ if (isset($pics[$num])) {
                 if ($name) {
                     $path = "tmp/pics/{$name}";
                     if (file_exists($path)) {
-                        $file->add_file($name, $path);
+                        $file->add_file($name, $path,$img_max_size);
                     };
                 };
             };
