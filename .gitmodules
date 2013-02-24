@@ -1,3 +1,6 @@
 [submodule "habrahabr_parser"]
 	path = habrahabr_parser
 	url = git@github.com:Newbilius/habrahabr_parser.git
+[submodule "holy_fb2"]
+	path = holy_fb2
+	url = git@github.com:Newbilius/holy_fb2_library.git

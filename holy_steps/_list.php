@@ -65,3 +65,8 @@
 
     }
 </script>
+
+<br>
+<a href="?skip_download=1">Пропустить этап скачивания</a>
+<br>
+<a href="?skip_download=0">Не пропускать этап скачивания</a>
