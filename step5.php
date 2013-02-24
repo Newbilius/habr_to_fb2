@@ -14,7 +14,7 @@ if ($_GET['num'] == 0)
 $num = $_GET['num'];
 $next_num=$num+1;
 
-$file = new HolyFB2("test.fb2");
+$file = new HolyFB2("habr.fb2");
 
 $articles=file($file_list);
 $count=count($articles);

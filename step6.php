@@ -17,7 +17,7 @@ $next_num = $num + 1;
 $pics = file($file_img_list);
 $count = count($pics);
 
-$file = new HolyFB2("test.fb2");
+$file = new HolyFB2("habr.fb2");
 
 if (isset($pics[$num])) {
     if ($pics[$num]) {
