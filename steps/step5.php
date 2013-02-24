@@ -1,6 +1,6 @@
 <?php
 
-include_once("config.php");
+include_once(dirname(dirname(__FILE__)) ."/config.php");
 
 if (!isset($_GET['num'])) {
     $_GET['num'] = 0;
@@ -14,16 +14,16 @@ if ($_GET['num'] == 0)
 $num = $_GET['num'];
 $next_num=$num+1;
 
-$file = new HolyFB2("habr.fb2");
+$file = new HolyFB2(dirname(dirname(__FILE__)).$out_file);
 
-$articles=file($file_list);
+$articles=file(dirname(dirname(__FILE__)).$file_list);
 $count=count($articles);
 
 if (isset($articles[$num])) {
     $article_id=intval($articles[$num]);
     
-    $content= unserialize(file_get_contents("tmp/articles/{$article_id}.html"));
-    $file->add_section($content['caption'], $content['content_ok']['text']);
+    $content= unserialize(file_get_contents(dirname(dirname(__FILE__)).$folder_tmp_articles."/".$article_id.".html"));
+    $file->add_section($content['caption'], $content['content_ok']['text'],$convert_br_to_p);
     echo $step->this_step("сохранение в файл статьи с id {$article_id} завершена (статья номер {$next_num} из {$count})", "?num={$next_num}");
 } else {
     $file->write_end_body();

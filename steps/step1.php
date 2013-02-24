@@ -1,6 +1,7 @@
 <?php
 
-include_once("config.php");
+include_once(dirname(dirname(__FILE__)) ."/config.php");
+create_dirs();
 
 if (!isset($_GET['page'])) {
     $_GET['page'] = 1;
@@ -29,7 +30,7 @@ if (isset($list['next_url'])) {
 if (isset($list['items'])){
     if (is_array($list['items'])){
         foreach($list['items'] as $_item){
-            file_put_contents($file_list, $_item['id']."\n", FILE_APPEND | LOCK_EX);
+            file_put_contents(dirname(dirname(__FILE__)).$file_list, $_item['id']."\n", FILE_APPEND | LOCK_EX);
         }
     }
 }

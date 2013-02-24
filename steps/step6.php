@@ -1,6 +1,6 @@
 <?php
 
-include_once("config.php");
+include_once(dirname(dirname(__FILE__)) ."/config.php");
 
 if (!isset($_GET['num'])) {
     $_GET['num'] = 0;
@@ -14,10 +14,10 @@ if ($_GET['num'] == 0)
 $num = $_GET['num'];
 $next_num = $num + 1;
 
-$pics = file($file_img_list);
+$pics = file(dirname(dirname(__FILE__)).$file_img_list);
 $count = count($pics);
 
-$file = new HolyFB2("habr.fb2");
+$file = new HolyFB2(dirname(dirname(__FILE__)).$out_file);
 
 if (isset($pics[$num])) {
     if ($pics[$num]) {
@@ -26,7 +26,7 @@ if (isset($pics[$num])) {
             if ($img_tmp[0]) {
                 $name = trim($img_tmp[0]);
                 if ($name) {
-                    $path = "tmp/pics/{$name}";
+                    $path = dirname(dirname(__FILE__)).$folder_tmp_pics."/".$name;
                     if (file_exists($path)) {
                         $file->add_file($name, $path,$img_max_size);
                     };

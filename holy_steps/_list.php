@@ -13,7 +13,7 @@
     }
     ?>
     <li id="complete" >
-        ГОТОВО
+        Генерация файла завершена.
         <span id="info_complete"></span>
     </li>
 </ul>
@@ -66,7 +66,7 @@
     }
 </script>
 
-<br>
+<br><br>
 <a href="?skip_download=1">Пропустить этап скачивания</a>
-<br>
+<br><br>
 <a href="?skip_download=0">Не пропускать этап скачивания</a>
