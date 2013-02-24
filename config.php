@@ -10,12 +10,13 @@ $login = "newbilius";
 $favorites_url = "http://habrahabr.ru/users/{$login}/favorites/";
 $file_list = '/tmp/list.txt';
 $file_img_list = '/tmp/pictures.txt';
-$folder_tmp_articles="/tmp/articles";
-$folder_tmp_pics="/tmp/pics";
-$folder_tmp="/tmp";
-$img_max_size = 400;    //максимальный размер картинок
-$skip_img = false;      //true - не сохранять картинки
-$convert_br_to_p=true;
+$folder_tmp_articles = "/tmp/articles";
+$folder_tmp_pics = "/tmp/pics";
+$folder_tmp = "/tmp";
+
+$img_max_size = 400;    //максимальный размер картинок по обеим сторонам
+$skip_img = false;      //true - НЕ сохранять картинки
+$convert_br_to_p = true;  //true - превращать тэги <br> в </p><p>. При false совместимость выше, чиатемость - ниже.
 $out_file = "/habr.fb2";
 
 $step = new Holy_stepbystep();

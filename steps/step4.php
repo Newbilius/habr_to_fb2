@@ -1,10 +1,30 @@
 <?php
 
-include_once(dirname(dirname(__FILE__)) ."/config.php");
+include_once(dirname(dirname(__FILE__)) . "/config.php");
 
-$file = new HolyFB2(dirname(dirname(__FILE__)).$out_file);
+$file = new HolyFB2(dirname(dirname(__FILE__)) . $out_file);
 
-$file->write_header(Array());
+$today_date = date("d.m.Y");
+$today_date_time = date("d.m.Y_H:i:s");
+
+$file->write_header(Array(
+    "date" => $today_date,
+    "id" => $favorites_url . "_" . $today_date_time,
+    "annotation" => "Избранное пользователя {$login} с сайта ХабраХабр",
+    "book-title" => "Избранное {$login} с ХабраХабра",
+    "author" => Array(
+        "first-name" => "Множество",
+        "last-name" => "Авторов",
+        "middle-name" => "Хабра",
+    ),
+    "document_author" => Array(
+        "first-name" => "Дмитрий",
+        "last-name" => "Моисеев",
+        "middle-name" => "Алексеевич",
+        "nickname" => "Newbilius (Nubilius)",
+        "email" => "newbilius@gmail.com",
+    ),
+));
 $file->write_start_body();
 
 echo $step->next_step();
