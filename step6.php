@@ -32,7 +32,7 @@ if (isset($pics[$num])) {
                     };
                 };
             };
-        echo $step->this_step("скачивание картинки {$name} завершено (картинка номер {$next_num} из {$count})", "?num={$next_num}");
+        echo $step->this_step("запись картинки {$name} завершено (картинка номер {$next_num} из {$count})", "?num={$next_num}");
     };
 } else {
     echo $step->next_step();
