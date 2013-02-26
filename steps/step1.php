@@ -13,6 +13,10 @@ if (isset($_GET['next_url'])) {
     $favorites_url = $_GET['next_url'];
 }
 
+if ($_GET['page']==1){
+    unlink(dirname(dirname(__FILE__)).$file_list);
+}
+
 $page = $_GET['page'];
 $page++;
 

@@ -1,4 +1,4 @@
-<?
+<?php
 $step = new Holy_stepbystep();
 
 $step_num = 0;

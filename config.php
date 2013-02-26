@@ -1,4 +1,4 @@
-<?
+<?php
 header('Content-Type: text/html; charset=utf-8');
 include_once("habrahabr_parser/holy_habr_api.php");
 include_once("holy_steps/holy_stepbystep.php");

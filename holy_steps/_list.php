@@ -4,12 +4,12 @@
     $counter = 0;
     foreach ($list as $counter => $_item) {
         ?>
-        <li id="counter_<?= $counter ?>">
-            <?= $_item['caption'] ?>
+        <li id="counter_<?php echo $counter ?>">
+            <?php echo $_item['caption'] ?>
             &nbsp; &nbsp;
-            <span id="info_<?= $counter ?>"></span>
+            <span id="info_<?php echo $counter ?>"></span>
         </li>
-        <?
+        <?php
     }
     ?>
     <li id="complete" >
@@ -23,8 +23,8 @@
     var urls_array=[];
     var url_add="";
     var step_now=0;
-    var max_step=<?= count($list) ?>;
-<? foreach ($list as $counter => $_item) { ?>urls_array[<?= $counter ?>]="<?= $_item['url'] ?>"; <?= "\r\n" ?><? } ?>
+    var max_step=<?php echo count($list) ?>;
+<?php foreach ($list as $counter => $_item) { ?>urls_array[<?php echo $counter ?>]="<?php echo $_item['url'] ?>"; <?php echo "\r\n" ?><?php } ?>
 
     function get_data(url){
         $.getJSON(url+url_add, {},
