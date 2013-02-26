@@ -15,6 +15,11 @@ if ($_GET['num'] == 0)
 $num = $_GET['num'];
 $next_num = $num + 1;
 
+if ($num==0){
+    $log->add("удаляем старый файл {$file_img_list}");
+    unlink(dirname(dirname(__FILE__)) . $file_img_list);
+}
+
 $articles = file(dirname(dirname(__FILE__)) . $file_list);
 $count = count($articles);
 
@@ -30,11 +35,13 @@ if (isset($articles[$num])) {
         $files = $content_tmp['content_ok']['files'];
         if (is_array($files)) {
             foreach ($files as $pic_id => $_file) {
+                $log->add("записываем имя картинки для скачивания - {$_file}");
                 file_put_contents(dirname(dirname(__FILE__)) . $file_img_list, $pic_id . "#IMG#" . $_file . "\n", FILE_APPEND | LOCK_EX);
             }
         }
     }
 
+    $log->add("запиываем содержание статьи {$article_id}");
     file_put_contents(dirname(dirname(__FILE__)) . $folder_tmp_articles . "/" . $article_id . ".html", $content . "\n");
 
     echo $step->this_step("обработка статьи с id {$article_id} завершена (статья номер {$next_num} из {$count})", "?num={$next_num}");

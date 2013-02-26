@@ -27,6 +27,7 @@ $file->write_header(Array(
     ),
 ));
 $file->write_start_body();
+$log->add("записываем в файл заголовки FB2-файла");
 
 echo $step->next_step();
 ?>

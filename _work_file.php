@@ -1,5 +1,10 @@
 <?php
+
 $step = new Holy_stepbystep();
+$log = new Holy_log($log_file);
+if (!$log_on) {
+    $log->turn_off();
+};
 
 $step_num = 0;
 $steps_array = Array(

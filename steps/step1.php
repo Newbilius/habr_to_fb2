@@ -14,6 +14,7 @@ if (isset($_GET['next_url'])) {
 }
 
 if ($_GET['page']==1){
+    $log->add("удаляем старый файл {$file_list}");
     unlink(dirname(dirname(__FILE__)).$file_list);
 }
 
@@ -34,6 +35,7 @@ if (isset($list['next_url'])) {
 if (isset($list['items'])){
     if (is_array($list['items'])){
         foreach($list['items'] as $_item){
+            $log->add("записываем id статьи {$_item['id']}");
             file_put_contents(dirname(dirname(__FILE__)).$file_list, $_item['id']."\n", FILE_APPEND | LOCK_EX);
         }
     }

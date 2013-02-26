@@ -25,6 +25,7 @@ if (isset($articles[$num])) {
     
     $content= unserialize(file_get_contents(dirname(dirname(__FILE__)).$folder_tmp_articles."/".$article_id.".html"));
     $file->add_section($content['caption'], $content['content_ok']['text'],$convert_br_to_p);
+    $log->add("сохранение в FB2-файл статьи с id {$article_id} завершена");
     echo $step->this_step("сохранение в файл статьи с id {$article_id} завершена (статья номер {$next_num} из {$count})", "?num={$next_num}");
 } else {
     $file->write_end_body();

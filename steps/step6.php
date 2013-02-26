@@ -1,6 +1,6 @@
 <?php
 
-include_once(dirname(dirname(__FILE__)) ."/config.php");
+include_once(dirname(dirname(__FILE__)) . "/config.php");
 create_dirs();
 
 if (!isset($_GET['num'])) {
@@ -15,10 +15,10 @@ if ($_GET['num'] == 0)
 $num = $_GET['num'];
 $next_num = $num + 1;
 
-$pics = file(dirname(dirname(__FILE__)).$file_img_list);
+$pics = file(dirname(dirname(__FILE__)) . $file_img_list);
 $count = count($pics);
 
-$file = new HolyFB2(dirname(dirname(__FILE__)).$out_file);
+$file = new HolyFB2(dirname(dirname(__FILE__)) . $out_file);
 
 if (isset($pics[$num])) {
     if ($pics[$num]) {
@@ -27,9 +27,16 @@ if (isset($pics[$num])) {
             if ($img_tmp[0]) {
                 $name = trim($img_tmp[0]);
                 if ($name) {
-                    $path = dirname(dirname(__FILE__)).$folder_tmp_pics."/".$name;
+                    $path = dirname(dirname(__FILE__)) . $folder_tmp_pics . "/" . $name;
                     if (file_exists($path)) {
-                        $file->add_file($name, $path,$img_max_size);
+                        $img_res = $file->add_file($name, $path, $img_max_size);
+                        if ($img_res) {
+                            $log->add("сохранение в FB2-файл картинки номер {$num} прошло успешно");
+                        } else {
+                            $log->add("ОШИБКА сохранения в FB2-файл картинки номер {$num} - $pics[$num]");
+                        };
+                    } else {
+                        $log->add("ОШИБКА сохранения в FB2-файл картинки номер {$num} - $pics[$num]");
                     };
                 };
             };
