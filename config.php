@@ -1,14 +1,4 @@
 <?
-
-/**
- * Скрипт сохранения избранного пользователя ХабраХабра.
- *
- * Лицензия - делайте с файлом что хотите, только не кидайтесь помидорами и автора из файлов не выкидывайте.
- *
- * @author     Моисеев Дмитрий aka Newbilius (Nubilius) <newbilius@gmail.com>
- * @copyright  2013
- * @link       https://github.com/Newbilius/habr_to_fb2
- */
 header('Content-Type: text/html; charset=utf-8');
 include_once("habrahabr_parser/holy_habr_api.php");
 include_once("holy_steps/holy_stepbystep.php");
@@ -23,50 +13,10 @@ $folder_tmp_articles = "/tmp/articles";
 $folder_tmp_pics = "/tmp/pics";
 $folder_tmp = "/tmp";
 
-$img_max_size = 400;    //максимальный размер картинок по обеим сторонам
+$img_max_size = 300;    //максимальный размер картинок по обеим сторонам
 $skip_img = false;      //true - НЕ сохранять картинки
 $convert_br_to_p = true;  //true - превращать тэги <br> в </p><p>. При false совместимость выше, чиатемость - ниже.
-$out_file = "/habr.fb2";
+$out_file = "/habr_{$login}.fb2";
 
-$step = new Holy_stepbystep();
-
-$step_num = 0;
-$steps_array = Array(
-    1 => "скачиваем список статей",
-    2 => "скачиваем каждую статью",
-    3 => "скачиваем картинки",
-    4 => "записываем начало файла в FB2",
-    5 => "записываем статьи в FB2",
-    6 => "записываем картинки в FB2",
-    7 => "записываем конец файла FB2",
-);
-if (isset($_GET['skip_download']))
-    if ($_GET['skip_download'] == 1) {
-        unset($steps_array[1]);
-        unset($steps_array[2]);
-        unset($steps_array[3]);
-    };
-if ($skip_img) {
-    unset($steps_array[6]);
-}
-
-foreach ($steps_array as $step_file_num => $_step) {
-    $step_num++;
-    $step->add("steps/step{$step_file_num}.php", "Шаг {$step_num} - {$_step}");
-}
-
-function create_dirs() {
-    global $folder_tmp;
-    global $folder_tmp_articles;
-    global $folder_tmp_pics;
-
-    if (!file_exists(dirname(__FILE__) . $folder_tmp))
-        mkdir(dirname(__FILE__) . $folder_tmp);
-    if (!file_exists(dirname(__FILE__) . $folder_tmp_articles))
-        mkdir(dirname(__FILE__) . $folder_tmp_articles);
-    if (!file_exists(dirname(__FILE__) . $folder_tmp_pics))
-        mkdir(dirname(__FILE__) . $folder_tmp_pics);
-}
-
-;
+include_once("_work_file.php");
 ?>
