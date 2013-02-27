@@ -29,6 +29,9 @@ if (isset($articles[$num])) {
     $item_src = new HolyHabrAPI();
     $content_tmp = $item_src->get_article($article_id);
     $content_tmp['content_ok'] = HolyHabrAPI::prepare_content_for_download($content_tmp['content'], "{$article_id}_");
+    if ($comments){
+        $content_tmp['comments']=$item_src->get_comments($article_id);
+    }
     $content = serialize($content_tmp);
 
     if (isset($content_tmp['content_ok']['files'])) {

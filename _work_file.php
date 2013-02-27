@@ -23,6 +23,7 @@ if (isset($_GET['skip_download']))
         unset($steps_array[3]);
     };
 if ($skip_img) {
+    unset($steps_array[3]);
     unset($steps_array[6]);
 }
 
