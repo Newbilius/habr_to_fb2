@@ -19,11 +19,11 @@ function get_comments_from_array($comments,$add_text="") {
     $content = "";
     if (is_array($comments)) {
         foreach ($comments as $_comment) {
-            $content.="</p></empty-line><p>{$add_text}" .
+            $content.="</empty-line><p>{$add_text}" .
                     "<b>" . $_comment['user_info']['name'] . "</b> " .
                     "(" . $_comment['time'] . ")" . " " .
                     "[" . $_comment['score'] . "]" . " " .
-                    "</p><p>{$add_text}" .
+                    "</empty-line>{$add_text}" .
                     $_comment['html']
             ;
             if (isset($_comment['childs'])) {
@@ -49,15 +49,12 @@ if (isset($articles[$num])) {
     $content_out = $content['content_ok']['text'];
 
     if ($comments) {
-        //print_pr($content['comments']);
-        $comments_text = HolyFB2::prepare_text(get_comments_from_array($content['comments']), true, $convert_br_to_p);
-        $content_out.="</p></empty-line><p><b>Комментарии</b></p></empty-line><p>";
+        $comments_text = HolyFB2::prepare_text(get_comments_from_array($content['comments']), true, $convert_br_to_emptyline);
+        $content_out.="</empty-line><p><b>Комментарии</b></p></empty-line>";
         $content_out.=$comments_text;
-        //echo $content_out;
-        //die();
     }
 
-    $file->add_section($content['caption'], $content_out, $convert_br_to_p);
+    $file->add_section($content['caption'], $content_out, $convert_br_to_emptyline);
     $log->add("сохранение в FB2-файл статьи с id {$article_id} завершена");
     echo $step->this_step("сохранение в файл статьи с id {$article_id} завершена (статья номер {$next_num} из {$count})", "?num={$next_num}");
 } else {
